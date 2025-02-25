@@ -1,66 +1,121 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Here’s your updated **README.md** without the deployment and test sections:  
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---
 
-## About Laravel
+### **README.md**  
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+```md
+# Venue Management System API
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This is a Laravel-based API for managing venues, featuring **user authentication, CRUD operations, validation, and API authentication using Laravel Sanctum**.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 Features
+- **User Authentication** (Register & Login with Laravel Sanctum)
+- **CRUD Operations for Venues**
+- **Validation & Error Handling**
+- **MySQL Database**
+- **Factories for Generating Fake Data via Tinker**
+- **Best Practices (MVC, Eloquent, API Structure)**
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 📌 **Installation Guide**
+### **1. Clone the Repository**
+```sh
+git clone https://github.com/habibaesam13/Venue-Management-System-API.git
+cd Venue-Management-System-API
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### **2. Install Dependencies**
+```sh
+composer install
+npm install
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### **3. Set Up Environment Variables**
+```sh
+cp .env.example .env
+php artisan key:generate
+```
+Then, configure your `.env` file with **MySQL credentials**:
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database_name
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## Laravel Sponsors
+### **4. Run Migrations**
+```sh
+php artisan migrate
+```
+This will create the necessary database tables.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## 📌 **Generating Fake Data with Tinker**
+Since you are using **Laravel Tinker** instead of seeders, you can manually generate venues using **factories**.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### **Open Tinker**
+```sh
+php artisan tinker
+```
 
-## Contributing
+### **Run the Following Command to Create Fake Venues**
+```php
+\App\Models\Venue::factory()->count(20)->create();
+```
+This will insert **20 random venues** into the database.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 📌 **Run the Development Server**
+```sh
+php artisan serve
+```
+API will be available at **http://127.0.0.1:8000**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## 📌 **API Endpoints**
+### **Authentication**
+| Method | Endpoint | Description |
+|--------|---------|------------|
+| `POST` | `/api/register` | Register a new user |
+| `POST` | `/api/login` | Login & receive a token |
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### **Venues (Requires Authentication)**
+| Method | Endpoint | Description |
+|--------|---------|------------|
+| `GET`  | `/api/venues` | List all venues |
+| `POST` | `/api/venues` | Create a new venue |
+| `PUT`  | `/api/venues/{id}` | Update a venue |
+| `DELETE` | `/api/venues/{id}` | Delete a venue |
 
-## License
+🔒 **Note:** Include the token in the `Authorization` header for protected routes:
+```
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## 📌 **Factories**
+The project includes **factories to generate fake venues**, used with **Tinker**.
+
+The `VenueFactory.php` file generates:
+```php
+public function definition()
+{
+    return [
+        'name' => $this->faker->unique()->company,
+        'location' => $this->faker->address,
+        'capacity' => $this->faker->numberBetween(50, 5000),
+    ];
+}
+```
+
+---
+
+
