@@ -4,16 +4,16 @@
 ```md
 # Venue Management System API
 
-This is a **Laravel 12** API for managing venues, featuring **user authentication, CRUD operations, validation, and API authentication using Laravel Sanctum**.
+This is a Laravel 12 API for managing venues, featuring user authentication, CRUD operations, validation, and API authentication using Laravel Sanctum.
 
 ## 🚀 Features
-- **Laravel 12** with the latest features.
-- **User Authentication** (Register & Login with Laravel Sanctum).
-- **CRUD Operations for Venues**.
-- **Validation & Error Handling** (unique venue names, positive capacity values).
-- **MySQL Database**.
-- **Factories for Generating Fake Data via Tinker**.
-- **Best Practices (MVC, Eloquent, API Structure)**.
+- Laravel 12 with the latest features.
+- User Authentication (Register & Login with Laravel Sanctum).
+- CRUD Operations for Venues.
+- Validation & Error Handling (unique venue names, positive capacity values).
+- MySQL Database.
+- Factories for Generating Fake Data via Tinker.
+- Best Practices (MVC, Eloquent, API Structure).
 
 ---
 
