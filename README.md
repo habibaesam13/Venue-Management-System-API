@@ -65,7 +65,7 @@ php artisan tinker
 
 ### **Run the Following Command to Create Fake Venues**
 ```php
-\App\Models\Venue::factory()->count(20)->create();
+\App\Models\Venues::factory()->count(20)->create();
 ```
 This will insert **20 random venues** into the database.
 
@@ -104,7 +104,7 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 ## 📌 **Factories**
 The project includes **factories to generate fake venues**, used with **Tinker**.
 
-The `VenueFactory.php` file generates:
+The `VenuesFactory.php` file generates:
 ```php
 public function definition()
 {
